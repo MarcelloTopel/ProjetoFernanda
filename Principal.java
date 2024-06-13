@@ -1,4 +1,4 @@
-package ProjetoFernanda;
+package j;
 
 import java.util.Scanner;
 
