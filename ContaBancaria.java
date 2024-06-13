@@ -1,9 +1,9 @@
 package ProjetoFernanda;
 
-public class ContaBancaria {
+public abstract class ContaBancaria {
     private String numero;
     private String titular;
-    private double saldo;
+    protected double saldo;
 
     public ContaBancaria(String numero, String titular, double saldoInicial) {
         this.numero = numero;

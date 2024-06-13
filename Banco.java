@@ -9,9 +9,19 @@ public class Banco {
         contas = new HashMap<>();
     }
 
-    public boolean criarConta(String numero, String titular, double saldoInicial) {
+    public boolean criarContaCorrente(String numero, String titular, double saldoInicial, double taxaDeOperacao) {
         if (!contas.containsKey(numero)) {
-            ContaBancaria novaConta = new ContaBancaria(numero, titular, saldoInicial);
+            ContaCorrente novaConta = new ContaCorrente(numero, titular, saldoInicial, taxaDeOperacao);
+            contas.put(numero, novaConta);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean criarContaPoupanca(String numero, String titular, double saldoInicial, double taxaDeJuros) {
+        if (!contas.containsKey(numero)) {
+            ContaPoupanca novaConta = new ContaPoupanca(numero, titular, saldoInicial, taxaDeJuros);
             contas.put(numero, novaConta);
             return true;
         } else {

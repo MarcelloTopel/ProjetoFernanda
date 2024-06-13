@@ -9,43 +9,61 @@ public class Principal {
 
         while (true) {
             System.out.println("Escolha uma opção:");
-            System.out.println("1. Criar Conta");
-            System.out.println("2. Depositar");
-            System.out.println("3. Sacar");
-            System.out.println("4. Transferir");
-            System.out.println("5. Consultar Saldo");
-            System.out.println("6. Sair");
+            System.out.println("1. Criar Conta Corrente");
+            System.out.println("2. Criar Conta Poupança");
+            System.out.println("3. Depositar");
+            System.out.println("4. Sacar");
+            System.out.println("5. Transferir");
+            System.out.println("6. Consultar Saldo");
+            System.out.println("7. Sair");
             int opcao = scanner.nextInt();
 
             switch (opcao) {
                 case 1:
                     System.out.println("Digite o número da conta:");
-                    String numero = scanner.next();
+                    String numeroCorrente = scanner.next();
                     System.out.println("Digite o nome do titular:");
-                    String titular = scanner.next();
+                    String titularCorrente = scanner.next();
                     System.out.println("Digite o saldo inicial:");
-                    double saldoInicial = scanner.nextDouble();
-                    if (banco.criarConta(numero, titular, saldoInicial)) {
-                        System.out.println("Conta criada com sucesso.");
+                    double saldoInicialCorrente = scanner.nextDouble();
+                    System.out.println("Digite a taxa de operação:");
+                    double taxaDeOperacao = scanner.nextDouble();
+                    if (banco.criarContaCorrente(numeroCorrente, titularCorrente, saldoInicialCorrente, taxaDeOperacao)) {
+                        System.out.println("Conta Corrente criada com sucesso.");
                     } else {
                         System.out.println("Número da conta já existe.");
                     }
                     break;
                 case 2:
                     System.out.println("Digite o número da conta:");
-                    numero = scanner.next();
-                    System.out.println("Digite o valor a ser depositado:");
-                    double valorDeposito = scanner.nextDouble();
-                    banco.depositar(numero, valorDeposito);
+                    String numeroPoupanca = scanner.next();
+                    System.out.println("Digite o nome do titular:");
+                    String titularPoupanca = scanner.next();
+                    System.out.println("Digite o saldo inicial:");
+                    double saldoInicialPoupanca = scanner.nextDouble();
+                    System.out.println("Digite a taxa de juros:");
+                    double taxaDeJuros = scanner.nextDouble();
+                    if (banco.criarContaPoupanca(numeroPoupanca, titularPoupanca, saldoInicialPoupanca, taxaDeJuros)) {
+                        System.out.println("Conta Poupança criada com sucesso.");
+                    } else {
+                        System.out.println("Número da conta já existe.");
+                    }
                     break;
                 case 3:
                     System.out.println("Digite o número da conta:");
-                    numero = scanner.next();
-                    System.out.println("Digite o valor a ser sacado:");
-                    double valorSaque = scanner.nextDouble();
-                    banco.sacar(numero, valorSaque);
+                    String numeroDeposito = scanner.next();
+                    System.out.println("Digite o valor a ser depositado:");
+                    double valorDeposito = scanner.nextDouble();
+                    banco.depositar(numeroDeposito, valorDeposito);
                     break;
                 case 4:
+                    System.out.println("Digite o número da conta:");
+                    String numeroSaque = scanner.next();
+                    System.out.println("Digite o valor a ser sacado:");
+                    double valorSaque = scanner.nextDouble();
+                    banco.sacar(numeroSaque, valorSaque);
+                    break;
+                case 5:
                     System.out.println("Digite o número da conta de origem:");
                     String numeroOrigem = scanner.next();
                     System.out.println("Digite o número da conta de destino:");
@@ -54,12 +72,12 @@ public class Principal {
                     double valorTransferencia = scanner.nextDouble();
                     banco.transferir(numeroOrigem, numeroDestino, valorTransferencia);
                     break;
-                case 5:
-                    System.out.println("Digite o número da conta:");
-                    numero = scanner.next();
-                    banco.consultarSaldo(numero);
-                    break;
                 case 6:
+                    System.out.println("Digite o número da conta:");
+                    String numeroConsulta = scanner.next();
+                    banco.consultarSaldo(numeroConsulta);
+                    break;
+                case 7:
                     System.out.println("Saindo...");
                     scanner.close();
                     return;
